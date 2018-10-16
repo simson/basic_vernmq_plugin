@@ -1,0 +1,23 @@
+{application, basic_plugin,
+ [{description, "Print a message on register"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {mod, { basic_plugin_app, []}},
+  {applications,
+   [
+    vernemq_dev,
+    kernel,
+    stdlib,
+    inets,
+    clique
+   ]},
+  {env,[
+        {registry_mfa, {vmq_reg, direct_plugin_exports, [basic_plugin]}},
+        {vmq_plugin_hooks, [{basic_plugin, on_register, 3, []}]}
+  ]},
+  {modules, []},
+
+  {maintainers, []},
+  {licenses, []},
+  {links, []}
+ ]}.
